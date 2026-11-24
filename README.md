@@ -74,6 +74,8 @@ npm install -g @stackgauge/mcp-slim
 mcp-slim audit
 ```
 
+> **Tip — verify your version.** `npx` and global installs can serve a **stale cached copy**, so a new feature may look "missing." Check with `mcp-slim --version` (or `npx @stackgauge/mcp-slim@latest --version`). If it's behind, update with `npm install -g @stackgauge/mcp-slim@latest`, or clear the npx cache: `rm -rf "$(npm config get cache)/_npx"`.
+
 ### Commands
 
 ```
