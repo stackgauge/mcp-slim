@@ -5,6 +5,13 @@ maintained automatically by [release-please](https://github.com/googleapis/relea
 from [Conventional Commits](https://www.conventionalcommits.org/); do not edit
 it by hand.
 
+## [1.4.0](https://github.com/stackgauge/mcp-slim/compare/mcp-slim-v1.3.1...mcp-slim-v1.4.0) (2026-11-24)
+
+
+### Documentation
+
+* drop personal handle from author line ([#19](https://github.com/stackgauge/mcp-slim/issues/19)) ([fa13039](https://github.com/stackgauge/mcp-slim/commit/fa13039decb4e2a8c73d12ceadf6397679467907))
+
 ## [1.3.1](https://github.com/stackgauge/mcp-slim/compare/mcp-slim-v1.3.0...mcp-slim-v1.3.1) (2026-11-24)
 
 
