@@ -7,7 +7,7 @@ smooth.
 ## Development setup
 
 ```bash
-git clone https://github.com/next-dna/mcp-slim.git
+git clone https://github.com/stackgauge/mcp-slim.git
 cd mcp-slim
 npm install
 npm run build
