@@ -28,7 +28,7 @@ These configs are buried JSON files most people never open. `mcp-slim` makes the
 **Quick personal health check** (no install needed):
 
 ```bash
-npx @nextdna/mcp-slim audit
+npx @stackgauge/mcp-slim audit
 ```
 
 Auto-finds your Claude / Cursor / Windsurf configs and prints a per-server token table plus ranked security findings.
@@ -36,7 +36,7 @@ Auto-finds your Claude / Cursor / Windsurf configs and prints a per-server token
 **Review a shared team config before rollout:**
 
 ```bash
-npx @nextdna/mcp-slim audit --config ./team-mcp.json
+npx @stackgauge/mcp-slim audit --config ./team-mcp.json
 ```
 
 Catches broad filesystem grants or `bash -c` servers before they reach everyone's machine.
@@ -44,7 +44,7 @@ Catches broad filesystem grants or `bash -c` servers before they reach everyone'
 **Gate CI / pre-commit on config hygiene** — `audit` exits with code `2` on any HIGH finding:
 
 ```bash
-npx @nextdna/mcp-slim audit --config ./mcp.json || exit 1
+npx @stackgauge/mcp-slim audit --config ./mcp.json || exit 1
 ```
 
 Add `--json` to feed dashboards or custom policy checks.
@@ -52,7 +52,7 @@ Add `--json` to feed dashboards or custom policy checks.
 **Trim context cost** with a lossless, minified config:
 
 ```bash
-npx @nextdna/mcp-slim compress
+npx @stackgauge/mcp-slim compress
 ```
 
 ## Requirements
@@ -64,13 +64,13 @@ npx @nextdna/mcp-slim compress
 No install needed:
 
 ```bash
-npx @nextdna/mcp-slim audit
+npx @stackgauge/mcp-slim audit
 ```
 
 Or install globally:
 
 ```bash
-npm install -g @nextdna/mcp-slim
+npm install -g @stackgauge/mcp-slim
 mcp-slim audit
 ```
 
@@ -100,19 +100,19 @@ mcp-slim trends                Report token footprint over time from recorded hi
 
 ```bash
 # Audit every config the tool can find
-npx @nextdna/mcp-slim audit
+npx @stackgauge/mcp-slim audit
 
 # Audit a specific file
-npx @nextdna/mcp-slim audit --config ./claude_desktop_config.json
+npx @stackgauge/mcp-slim audit --config ./claude_desktop_config.json
 
 # Get JSON for scripting / CI
-npx @nextdna/mcp-slim audit --json
+npx @stackgauge/mcp-slim audit --json
 
 # See how your footprint trends over time (weekly buckets)
-npx @nextdna/mcp-slim trends --period weekly
+npx @stackgauge/mcp-slim trends --period weekly
 
 # See how much you could trim
-npx @nextdna/mcp-slim compress
+npx @stackgauge/mcp-slim compress
 ```
 
 ### Exit codes
@@ -127,13 +127,13 @@ Tune the gate with `--fail-on none|low|medium|high`:
 
 ```bash
 # Default: fail only on HIGH findings
-npx @nextdna/mcp-slim audit
+npx @stackgauge/mcp-slim audit
 
 # Stricter: fail on medium-and-up
-npx @nextdna/mcp-slim audit --fail-on medium
+npx @stackgauge/mcp-slim audit --fail-on medium
 
 # Report only, never fail
-npx @nextdna/mcp-slim audit --fail-on none
+npx @stackgauge/mcp-slim audit --fail-on none
 ```
 
 ## Use as a GitHub Action
@@ -149,18 +149,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: next-dna/mcp-slim@main
+      - uses: stackgauge/mcp-slim@main
         with:
           config: .mcp/config.json   # optional; omit for auto-discovery
           fail-on: high              # none | low | medium | high
 ```
 
-**Inputs:** `config` (path to audit), `fail-on` (severity gate), `version` (dist-tag/version of `@nextdna/mcp-slim`, default `latest`), `args` (extra flags). Pin to a release tag or commit SHA instead of `@main` for reproducible builds.
+**Inputs:** `config` (path to audit), `fail-on` (severity gate), `version` (dist-tag/version of `@stackgauge/mcp-slim`, default `latest`), `args` (extra flags). Pin to a release tag or commit SHA instead of `@main` for reproducible builds.
 
 **Outputs:** `grade` (A–F) and `score` (0–100) — usable in later steps. The action also writes a security summary to the **PR's Checks tab** (via the job step summary):
 
 ```yaml
-      - uses: next-dna/mcp-slim@main
+      - uses: stackgauge/mcp-slim@main
         id: mcp
         with:
           fail-on: medium
@@ -181,7 +181,7 @@ The grade (A–F) is scored from the security findings — a clean config earns 
 Add `--badge` to also get a ready-to-paste **shields.io badge** for your README or a social post:
 
 ```bash
-npx @nextdna/mcp-slim audit --badge
+npx @stackgauge/mcp-slim audit --badge
 ```
 
 ```
@@ -211,7 +211,7 @@ v1.0 measures the **static config** — the serialized JSON for each server defi
 The `trends` command then aggregates that history into period buckets:
 
 ```bash
-npx @nextdna/mcp-slim trends --period daily
+npx @stackgauge/mcp-slim trends --period daily
 ```
 
 ```
@@ -226,7 +226,7 @@ Periods: `hourly`, `daily`, `weekly` (ISO week), `monthly`, `quarterly`, `yearly
 Because the footprint only changes when your config changes, a dense time-series comes from **sampling regularly** — schedule `audit` to build history, e.g. hourly via cron:
 
 ```bash
-0 * * * * npx @nextdna/mcp-slim audit >/dev/null 2>&1
+0 * * * * npx @stackgauge/mcp-slim audit >/dev/null 2>&1
 ```
 
 > **What this measures:** the *static config footprint* over time (the same estimate `audit` reports), **not** live per-request token consumption from your Claude/Cursor/Windsurf sessions — those clients don't expose a usage log `mcp-slim` can read. It's a lower-bound proxy for how your MCP context cost evolves as you add, remove, or change servers.
@@ -245,7 +245,7 @@ npm test
 Created and maintained by **Sandip Gami** ([@next-dna](https://github.com/next-dna)).
 
 Contributions are welcome — open an issue or PR at
-[next-dna/mcp-slim](https://github.com/next-dna/mcp-slim).
+[stackgauge/mcp-slim](https://github.com/stackgauge/mcp-slim).
 
 ## License
 

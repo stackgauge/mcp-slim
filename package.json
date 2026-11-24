@@ -1,5 +1,5 @@
 {
-  "name": "@nextdna/mcp-slim",
+  "name": "@stackgauge/mcp-slim",
   "version": "1.3.0",
   "description": "Audit MCP server configs for security risks and token bloat — zero-dependency CLI for Claude, Cursor & Windsurf.",
   "keywords": [
@@ -19,12 +19,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/next-dna/mcp-slim.git"
+    "url": "git+https://github.com/stackgauge/mcp-slim.git"
   },
   "bugs": {
-    "url": "https://github.com/next-dna/mcp-slim/issues"
+    "url": "https://github.com/stackgauge/mcp-slim/issues"
   },
-  "homepage": "https://github.com/next-dna/mcp-slim#readme",
+  "homepage": "https://github.com/stackgauge/mcp-slim#readme",
   "type": "commonjs",
   "publishConfig": {
     "access": "public"

@@ -15,7 +15,7 @@ inputs:
     required: false
     default: 'high'
   version:
-    description: 'Version or dist-tag of @nextdna/mcp-slim to run.'
+    description: 'Version or dist-tag of @stackgauge/mcp-slim to run.'
     required: false
     default: 'latest'
   args:
@@ -47,7 +47,7 @@ runs:
         set -uo pipefail
         config_arg=()
         if [ -n "$INPUT_CONFIG" ]; then config_arg=(--config "$INPUT_CONFIG"); fi
-        pkg="@nextdna/mcp-slim@${INPUT_VERSION}"
+        pkg="@stackgauge/mcp-slim@${INPUT_VERSION}"
 
         # Human-readable report in the job log; captures the pass/fail gate.
         npx -y "$pkg" audit "${config_arg[@]}" --fail-on "$INPUT_FAIL_ON" --no-history $INPUT_ARGS
