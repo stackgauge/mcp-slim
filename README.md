@@ -244,7 +244,7 @@ npm test
 
 ## Author
 
-Created and maintained by **Sandip Gami** ([@next-dna](https://github.com/next-dna)).
+Created and maintained by **Sandip Gami**.
 
 Contributions are welcome — open an issue or PR at
 [stackgauge/mcp-slim](https://github.com/stackgauge/mcp-slim).
