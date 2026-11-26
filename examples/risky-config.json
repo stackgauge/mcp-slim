@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/"]
+    },
+    "shell": {
+      "command": "bash",
+      "args": ["-c", "run-tool"]
+    },
+    "internal-api": {
+      "command": "npx",
+      "args": ["-y", "some-remote-server", "--endpoint", "http://api.internal.example/mcp"]
+    }
+  }
+}

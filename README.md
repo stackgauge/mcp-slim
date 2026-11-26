@@ -2,7 +2,24 @@
 
 > Audit your Model Context Protocol (MCP) server configs for **security risks** and **token bloat** — with zero runtime dependencies.
 
+<!-- Demo: replace with examples/demo.gif once recorded -->
+<p align="center"><em>Run <code>mcp-slim audit</code> and get a security grade in one command.</em></p>
+
 `mcp-slim` is a developer-first CLI that inspects the MCP servers registered with Claude Desktop, Cursor, and Windsurf. It estimates the token footprint each server adds to your context, flags risky permissions (shell execution, broad filesystem access, unpinned packages, plaintext secrets, insecure transports), and can emit a minified, lossless config to trim overhead.
+
+## Try it in 10 seconds
+
+No install, no real servers needed — audit the bundled [examples](examples/):
+
+```bash
+# A risky config — grades F
+npx @stackgauge/mcp-slim audit --config examples/risky-config.json
+
+# The cleaned-up version — grades A
+npx @stackgauge/mcp-slim audit --config examples/clean-config.json
+```
+
+See [`examples/`](examples/) for the risky→clean contrast, then point `--config` at your own setup.
 
 ## Why mcp-slim?
 
